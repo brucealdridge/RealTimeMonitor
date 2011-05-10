@@ -1,5 +1,5 @@
 var timeout = 5000;
-var wsServer = '192.168.2.2:8880';
+var wsServer = '127.0.0.1:8880';
 var unread = 0;
 var focus = false;
 

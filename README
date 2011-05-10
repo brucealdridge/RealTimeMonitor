@@ -2,15 +2,15 @@ A real time monitor for PHP applicacions using node.js and WebSockets
 
 Starting the server:
 
-$ node server.js 
-HTTP server started at 192.168.2.2::5672
-Web Socket server started at 192.168.2.2::8880
+$ node server.js
+HTTP server started at 127.0.0.1::5672
+Web Socket server started at 127.0.0.1::8880
 
 PHP application configuration
 place this code at the beggining of the script:
 
 include('NodeLog.php');
-NodeLog::init('192.168.2.2', 5672); // ip and port of the node.js http server
+NodeLog::init('127.0.0.1', 5672); // ip and port of the node.js http server
 
 Web interface based on nodejs.org chat demo (http://chat.nodejs.org/)
 

@@ -6,11 +6,11 @@ var sys  = require('sys'),
 var clients = [];
 
 var wsConf = {
-    host: '192.168.2.2',
+    host: '127.0.0.1',
     port: 8880
 };
 var httpConf = {
-    host: '192.168.2.2',
+    host: '127.0.0.1',
     port: 5672
 };
 var localhost = '127.0.0.1';
@@ -34,7 +34,7 @@ http.createServer(function (req, res) {
             var type = parsedUrl.query.type;
             var logString = parsedUrl.query.logString;
             var ip = eval(parsedUrl.query.logString)[0];
- 
+
             if (inspectingUrl == "" ||  inspectingUrl == ip) {
                 clients.forEach(function(client) {
                     client.write(logString);
@@ -47,8 +47,8 @@ http.createServer(function (req, res) {
             });
             res.end('System Error\n');
         }
-  
-      
+
+
     } else {
         console.log("401 to " + remoteAdrress);
         res.writeHead(401, {
@@ -66,14 +66,14 @@ ws.createServer(function(websocket) {
         inspectingUrl = parsedUrl.query.ip;
         clients.push(websocket);
     });
-  
+
     websocket.on('close', function() {
         var pos = clients.indexOf(websocket);
         if (pos >= 0) {
             clients.splice(pos, 1);
         }
     });
-  
+
 }).listen(wsConf.port, wsConf.host);
 
 console.log("HTTP server started at " + httpConf.host + "::" + httpConf.port);

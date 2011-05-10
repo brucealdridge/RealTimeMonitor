@@ -1,7 +1,7 @@
 <?php
 error_reporting(-1);
 include('client/NodeLog.php');
-$node = NodeLog::init('192.168.2.2');
+$node = NodeLog::init('127.0.0.1');
 
 $a = $var[1];
 $a = 1/0;
